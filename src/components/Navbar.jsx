@@ -5,7 +5,7 @@ import { MdOutlineMenu } from "react-icons/md";
 
 const Navbar = () => {
     const [isMobile, SetIsMobile]=useState(false)
-    console.log(isMobile);
+    // console.log(isMobile);
     
 // let Sum=(a,b)=>{
 // let sum=a+b
