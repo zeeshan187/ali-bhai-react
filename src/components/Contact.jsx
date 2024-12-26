@@ -1,31 +1,67 @@
-import React, { useEffect, useMemo, useState } from 'react'
-
+import React, { useEffect, useRef, useState } from "react";
+import "../styles/general.css";
+import axios from "axios";
 const Contact = () => {
-  let [data, setData]=useState(10)
-  let [value, setValue]=useState(100)
+  let [data, setData] = useState([]);
+  // let data=useRef()
+  // let FormSubmitted=(e)=>{
+  //   e.preventDefault()
+  //   const formData = new FormData(data.current);
+  //   const value = Object.fromEntries(formData.entries());
+  //   console.log(value)
+  // }
 
-  // useEffect(()=>{
-  //   console.log("API CAllING");
-  // },[data])
-  let memoizedfunction = useMemo(()=>{
-    console.log('mesasge inside function');
-    return data*3
-  }, [data])
-    
- 
-  
+  // Api Integration
+  let ApiCalling = async () => {
+    let value = await axios("https://jsonplaceholder.typicode.com/users");
+    setData(value.data);
+  };
+  useEffect(() => {
+    ApiCalling();
+  }, []);
+
+  console.log(data);
+
   return (
     <div>
-      <h2>Data:{data}</h2>
-      <h2>Value:{value}</h2>
-      <h2>function value:{memoizedfunction}</h2>
-      <button onClick={()=>setData(data+1)}>Update Data</button>
-      <button onClick={()=>setValue(value+1)}>Update Value</button>
+      {/* <table border="1">
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Username</td>
+          <td>Actions</td>
+        </tr>
+        {data.map((item) => (
+          <tr>
+            <td>{item.name}</td>
+            <td>{item.email}</td>
+            <td>{item.username}</td>
+            <td><button>Delete</button></td>
+          </tr>
+        ))}
+      </table> */}
+
+      <table class="table table-striped">
+        <thead>
+          <tr >
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">UserName</th>
+          </tr>
+        </thead>
+        <tbody>
+        {data.map((item) => (
+          <tr >
+            <td class="bg-warning">{item.name}</td>
+            <td class="bg-dark custom_text_color">{item.email}</td>
+            <td>{item.username}</td>
+          </tr>
+        ))}
+          
+        </tbody>
+      </table>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
-
-
-
+export default Contact;
