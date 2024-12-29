@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <h2>{data}</h2>
-      <button onClick={UpdateData}>Update Data Value</button>
+           <h2>2nd heading</h2>
     </div>
   );
 }
