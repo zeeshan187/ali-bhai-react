@@ -44,6 +44,7 @@ const Contact = () => {
       <table class="table table-striped">
         <thead>
           <tr >
+            <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">UserName</th>
           </tr>
@@ -53,7 +54,6 @@ const Contact = () => {
             <tr >
               <td class="bg-warning">{item.name}</td>
               <td class="bg-dark custom_text_color">{item.email}</td>
-              <td>{item.username}</td>
               <td>{item.username}</td>
             </tr>
           ))}
